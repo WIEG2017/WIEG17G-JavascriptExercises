@@ -1,34 +1,56 @@
 const chalk = require('chalk');
 const fs = require('fs');
 
-class console {
-    log(input) {
-        process.stdout.write(input)
-        process.stdout.write('\n')
+class Parser {
+
+    constructor(filePath, action) {
+        
+        if (filePath) {
+            this.text = fs.readFileSync(filePath).toString();
+        }
+        else {
+            this.text = "";
+        }
+
+        if (action) {
+            this.action = action
+        }
+        else {
+            this.action = this.defaultAction
+        }
+
+        this.parserMode = false;
     }
-}
 
-const text = fs.readFileSync('./index.html').toString();
+    defaultAction(symbol) {
+        return chalk.red(symbol);
+    }
 
-let redTextFlag = false;
+    parse() {
+        for (var i = 0; i < this.text.length; i++) {
+            let symbol = this.text[i];
 
-for (var i = 0; i < text.length; i++) {
-    let symbol = text[i];
-
-    switch(symbol) {
-        case "<": 
-            redTextFlag = true;
-            break;
-        case ">":
-            redTextFlag = false;
-            break;
-        default:
-            if (redTextFlag) {
-                symbol = chalk.red(symbol)
+            switch (symbol) {
+                case "<":
+                    this.parserMode = true;
+                    break;
+                case ">":
+                    this.parserMode = false;
+                    break;
+                default:
+                    if (this.parserMode) {
+                        symbol = this.action(symbol);
+                    }
+                    process.stdout.write(symbol);
+                    break;
             }
-            process.stdout.write(symbol);
-            break;
+        }
+        process.stdout.write('\n');
     }
 }
 
-process.stdout.write('\n');
+var myCodeParser = new Parser('./code.txt');
+var myHTMLParser = new Parser('./index.html', (symbol) => { return chalk.blue(symbol) });
+
+console.log(myCodeParser);
+console.log(myHTMLParser);
