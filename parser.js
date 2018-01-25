@@ -1,7 +1,7 @@
 const chalk = require('chalk');
 const fs = require('fs');
 
-class Parser {
+module.exports = class Parser {
 
     constructor(filePath, action) {
         
@@ -12,17 +12,10 @@ class Parser {
             this.text = "";
         }
 
-        if (action) {
-            this.action = action
-        }
-        else {
-            this.action = this.defaultAction
-        }
-
         this.parserMode = false;
     }
 
-    defaultAction(symbol) {
+    action(symbol) {
         return chalk.red(symbol);
     }
 
@@ -31,11 +24,11 @@ class Parser {
             let symbol = this.text[i];
 
             switch (symbol) {
-                case "<":
-                    this.parserMode = true;
-                    break;
                 case ">":
                     this.parserMode = false;
+                    break;
+                    case "<":
+                    this.parserMode = true;
                     break;
                 default:
                     if (this.parserMode) {
@@ -48,9 +41,3 @@ class Parser {
         process.stdout.write('\n');
     }
 }
-
-var myCodeParser = new Parser('./code.txt');
-var myHTMLParser = new Parser('./index.html', (symbol) => { return chalk.blue(symbol) });
-
-console.log(myCodeParser);
-console.log(myHTMLParser);
