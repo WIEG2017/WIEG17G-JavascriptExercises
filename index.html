@@ -1,6 +1,27 @@
 <html>
     <head><title>Repetition</title></head>
     <body>
-        Hello world from index.html
+        <a href="index.html">
+            Du har besökt sidan <span id="localVisitsId">X</span> gånger varav <span id="sessionVisitsId">Y</span> denna session.
+        </a>
+        <script>
+            var localVisits = JSON.parse(localStorage.getItem('localVisits'));
+            var sessionVisits = JSON.parse(sessionStorage.getItem('sessionVisits'));
+
+            if (localVisits == null) {
+                localVisits = 0;
+            }
+            if (sessionVisits == null) {
+                sessionVisits = 0;
+            }
+            localVisits = localVisits+1;
+            sessionVisits = sessionVisits+1;
+
+            localStorage.setItem('localVisits', JSON.stringify(localVisits));
+            sessionStorage.setItem('sessionVisits', JSON.stringify(sessionVisits));
+
+            document.getElementById('localVisitsId').innerText = localVisits;
+            document.getElementById('sessionVisitsId').innerText = sessionVisits;
+        </script>
     </body>
 </html>
