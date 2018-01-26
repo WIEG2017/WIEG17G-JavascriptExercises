@@ -1,0 +1,12 @@
+<paket>
+    <frakt kostnad="55"/>
+    <choklad name="mörk kaffe choklad" kakao="80%"/>
+    <choklad name="salt choklad"/>
+    <kund>
+    <presentförpackning hälsning="hej 🙂"/>
+</paket>
+<paket>
+    <frakt kostnad="55"/>
+    <choklad name="mörk kaffe choklad"/>
+    <presentförpackning hälsning="hallå"/>
+</paket>

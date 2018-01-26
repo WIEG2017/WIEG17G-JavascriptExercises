@@ -1,0 +1,10 @@
+<choklad name="mörk kaffe choklad">
+    <kakao>80%</kakao>
+    <mjölk>20%</mjölk>
+    <utfyllnad>kaffe</utfyllnad>
+</choklad>
+<choklad name="salt choklad">
+    <kakao>50%</kakao>
+    <mjölk>50%</mjölk>
+    <utfyllnad>salt</utfyllnad>
+</choklad>

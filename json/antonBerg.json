@@ -1,0 +1,34 @@
+{
+    "choklader": [
+        {
+            "id": 2,
+            "namn": "saltig choklad (med nytt recept)",
+            "kakao": 50,
+            "mjölk": 50,
+            "utfyllnad": "havssalt"
+        },
+        {
+            "id": 1,
+            "namn": "mörk kaffe choklad",
+            "kakao": 80,
+            "mjölk": 20,
+            "utfyllnad": "te"
+        }
+    ],
+    "paket": [
+        {
+            "choklad": [
+                {
+                    "namn": "mörk kaffe choklad",
+                    "kakao": 80,
+                    "mjölk": 20,
+                    "utfyllnad": "kaffe"
+                }
+            ],
+            "presentförpackning": {
+                "papper": "guld",
+                "hälsning": ""
+            }
+        }
+    ]
+}
